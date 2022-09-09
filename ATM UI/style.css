@@ -40,3 +40,9 @@
 	background-color: purple;
 	color: #ffffff;
 }
+
+label{
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+}
