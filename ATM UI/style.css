@@ -46,3 +46,6 @@ label{
     width: 150px;
     text-align: right;
 }
+.material-icons {
+    float: left;
+}
