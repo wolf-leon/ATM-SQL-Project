@@ -1,4 +1,6 @@
 <?php include('server.php') ?>
+
+
 <!DOCTYPE html>
 
 <html>
@@ -27,7 +29,7 @@
     </head>
 
 
-    <body style="background:linear-gradient(#ffb6c1,#ADD8E6);">
+    <body style="background:linear-gradient(#ffb6c1,#ADD8E6);background-attachment:fixed">
        <!-- auth page code here -->
       
       <div class="x">
@@ -46,9 +48,10 @@
     <p style="font-weight: bold;font-size: 60px;" >Enter Card Number</p>
     </div>
     <div class="mx-auto text-center" >
-    <form action="server.php" method="post" >
+    <form action="auth.php" method="post" >
      
       <?php include('errors.php') ?>
+      <br>
      <div class="text-center" style="margin-bottom:20px;">
         <input type="text" id="fname" name="fname" placeholder=" Card Number" ><br>
      </div>
