@@ -1,3 +1,5 @@
+<?php include('pserver.php') ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -44,14 +46,16 @@
     <p style="font-weight: bold;font-size: 60px;" >Enter Pin Number</p>
     </div>
     <div class="mx-auto text-center" >
-    <form action="index.html" method="post" >
+    <form action="pin.php" method="post" >
+    <?php include('errors.php') ?>
+
      <div class="text-center" style="margin-bottom:20px;">
-        <input type="text" id="fname" name="fname" placeholder=" PIN" ><br>
+        <input  type="text" maxlength="4" id="pname" name="pname" placeholder=" PIN" ><br>
      </div>
 
         <div class="text-center " style="margin-bottom: 20px;">
             
-            <input type="submit" value="Enter" class="rounded-pill btn btn-primary g">
+            <input name="pbutton" type="submit" value="Enter" class="rounded-pill btn btn-primary g">
         </div>
         <a href="url">Forgot Pin. Reset Now.</a>
 
@@ -62,8 +66,8 @@
 
       </div>
 
-            
 
+      
 
        <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>

@@ -1,5 +1,8 @@
 <?php 
 session_start();
+?>
+
+<?php
 $host="localhost"; // Host name
 $username="root"; // Mysql username
 $password=""; // Mysql password
@@ -37,12 +40,17 @@ $db=mysqli_connect("$host", "$username", "$password","$db_name")or die("cannot c
              
 				// Welcome message
 				$_SESSION['success'] = "You have logged in!";
-				header('location: pin.html'); //page on which the user is sent to after logging in
-			}else {
+				header('location: pin.php'); //page on which the user is sent to after logging in
+			}
+			
+			else {
 				array_push($errors, "Card Number doesnt exist or Has been blocked.Please Contact the bank"); 
 				//if the Card Number doesn't match
 			}
 		}
 	}
+
+	//PIN Verfication
+	
 
 ?>
