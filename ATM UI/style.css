@@ -46,8 +46,7 @@ label{
     width: 150px;
     text-align: right;
 }
-<<<<<<< HEAD
-=======
+
 
 .error {
 	width: 60%; 
@@ -60,4 +59,7 @@ label{
 	text-align: center;
 	font-size: medium;
 }
->>>>>>> e80c22225e320d478ad1f4e640ac4c46e8022f10
+
+.material-icons{
+    float: left;
+}
