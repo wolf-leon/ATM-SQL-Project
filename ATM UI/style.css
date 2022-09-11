@@ -46,3 +46,18 @@ label{
     width: 150px;
     text-align: right;
 }
+<<<<<<< HEAD
+=======
+
+.error {
+	width: 60%; 
+	margin: 0px auto; 
+	padding: 10px; 
+	border: 1px solid #a94442; 
+	color: #a94442; 
+	background: #f2dede; 
+	border-radius: 5px; 
+	text-align: center;
+	font-size: medium;
+}
+>>>>>>> e80c22225e320d478ad1f4e640ac4c46e8022f10

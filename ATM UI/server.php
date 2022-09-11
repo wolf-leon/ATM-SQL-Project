@@ -1,5 +1,8 @@
 <?php 
-     
+session_start();
+?>
+
+<?php
 $host="localhost"; // Host name
 $username="root"; // Mysql username
 $password=""; // Mysql password
@@ -10,8 +13,9 @@ $tbl_name="card"; // Table name
 $db=mysqli_connect("$host", "$username", "$password","$db_name")or die("cannot connect");
 
 	// declaring and hoisting the variables
-	$fname=$_POST['fname'];
-	$errors = array(); 
+	//$fname=$_POST['fname'];
+	$errors=array();
+ 
 
 	// user login
 	if (isset($_POST['cbutton'])) {
@@ -20,23 +24,33 @@ $db=mysqli_connect("$host", "$username", "$password","$db_name")or die("cannot c
 
 		//error message if the input field is left blank
 		if (empty($fname)) {
-			array_push($errors, "Card number is required");
+			
+			array_push($errors, "Card Number Required"); 
+
 		}
-		
-		//checking for the errors
 		if (count($errors) == 0) {
-			$query = "SELECT * FROM $tbl_name WHERE card_num='$fname' ";
+		//checking for the errors
+			$query = "SELECT * FROM $tbl_name WHERE card_num='$fname' AND card_stat=1;";
 			$results = mysqli_query($db, $query);
 
-			// $results = 1 means that one user with the entered username exists
+			// $results = 1 means that one user with the entered Card Number exists
 			if (mysqli_num_rows($results) == 1) {
-				
-				header('location: pin.html'); //page on which the user is sent to after logging in
-			}else {
-				array_push($errors, "Card Number is incorrect"); 
-				//if the username and password doesn't match
+				// Storing username in session variable
+				$_SESSION['fname'] = $fname;
+             
+				// Welcome message
+				$_SESSION['success'] = "You have logged in!";
+				header('location: pin.php'); //page on which the user is sent to after logging in
+			}
+			
+			else {
+				array_push($errors, "Card Number doesnt exist or Has been blocked.Please Contact the bank"); 
+				//if the Card Number doesn't match
 			}
 		}
 	}
+
+	//PIN Verfication
+	
 
 ?>
