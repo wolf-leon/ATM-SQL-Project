@@ -37,7 +37,6 @@
     <!-- auth page code here -->
     <a href="index.html"><i class="material-icons" style="font-size:30px">home</i></a>
     <a href="options.html"><i class="material-icons" style="font-size:30px">list</i></a>
-    <a href="end.html>"><i class="material-icons" style="font-size:30px">exit_to_app</i></a>
     <div class="x">
         <img src="bank logo.png" alt="bank logo" style="width:150px;height:100px;" ;>
     </div>
