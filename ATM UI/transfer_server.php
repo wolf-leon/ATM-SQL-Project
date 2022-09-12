@@ -74,7 +74,7 @@ $db=mysqli_connect("$host", "$username", "$password","$db_name")or die("cannot c
             $result2=mysqli_query($db,$update_to);
             if(!$result2 || mysqli_num_rows($result2)==0){
                 $_SESSION['success'] = "Transaction successful";
-                header('location: transfer_receipt.html'); //page on which the user is sent to after logging in                
+                header('location: transfer_receipt.html');  //page on which the user is sent to after logging in                
             }
             else{
                 array_push($errors,"Transaction failed");
