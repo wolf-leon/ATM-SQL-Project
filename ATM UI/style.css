@@ -47,6 +47,9 @@ label{
     text-align: right;
 }
 
+.material-icons{
+	float : left;
+}
 .error {
 	width: 60%; 
 	margin: 0px auto; 
@@ -58,6 +61,9 @@ label{
 	text-align: center;
 	font-size: medium;
 }
+<<<<<<< HEAD
+
+=======
 .transactions {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
@@ -80,6 +86,7 @@ label{
     background-color: #04AA6D;
     color: white;
  }
+<<<<<<< HEAD
  .button {
     background-color: #4CAF50;
     border: none;
@@ -93,3 +100,6 @@ label{
     margin: 40px 600px;
     cursor: pointer;
   }
+=======
+>>>>>>> 596d9b5d00c411b5adf74fd9a33d0b9a6fbdce55
+>>>>>>> ec0730e6697faa0dc591d21ecfd12187bf461223
