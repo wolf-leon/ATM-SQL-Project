@@ -1,4 +1,20 @@
 <?php include('server.php') ?>
+
+<?php 
+$con= mysqli_connect("localhost", "root", "", "atm")
+         or die(mysqli_errno($con));
+session_start();
+$pin=$_SESSION['Pin'];
+$select_query="select a.card_no, b.name ,b.balance,c.balance
+    from user a, account b,card c
+    where a.user_id=b.user_id and
+    b.user_id=c.user_id and
+    a.user_id=c.user_id and 
+    c.card_pin=$pin;";
+$select_query_result= mysqli_query($con, $select_query) or die(mysqli_error($con));
+$row= mysqli_fetch_array($select_query_result);
+?>
+
 <!DOCTYPE html>
 
 <html>
@@ -47,7 +63,27 @@
     </div>
     <div class="mx-auto text-center" >
 
-    
+    <div class="container">
+     <div class="row">
+         <h7><br><Br><Br <b><div class="col-xs-2">Card Number: </div>
+                        <div class="col-xs-10"><?php echo $row['card_no']; ?> </div><br><br></b></h7><br>
+            </div>
+            <div class="row">
+                <h7> <b><div class="col-xs-2">Name: </div>
+                        <div class="col-xs-10"><?php echo $row['name']; ?> </div><br><br></b></h7><br>
+            </div>
+    <div class="row">
+          
+                        <h7> <b><div class="col-xs-2">Available Balance:  </div>
+                                <div class="col-xs-10"><?php echo $row['balance']; ?></div></b><br><br></h7><br>
+                    
+            </div>
+            <div class="row">
+                <h7> <b><div class="col-xs-2">Balance: </div>
+                        <div class="col-xs-10"><?php echo $row['balance']; ?> </div><br><br></b></h7> </h7>
+        </div>
+    <a href="index.php" class="button">Exit</a>
+</div>
     <form action="auth.php" method="post" >
      
       <?php include('errors.php') ?>
