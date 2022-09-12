@@ -1,5 +1,17 @@
 <?php 
 session_start();
+//form counter
+if(isset($_POST['pbutton'])){
+	array_key_exists('counter', $_SESSION) ? $_SESSION['counter']++ : ($_SESSION['counter'] =1);
+	echo $_SESSION['counter'];
+	if($_SESSION['counter']>2)
+	{
+	  header("location: service.html");
+	  session_destroy();
+  
+	}
+	
+  }
 ?>
 <?php 
 $host="localhost"; // Host name
