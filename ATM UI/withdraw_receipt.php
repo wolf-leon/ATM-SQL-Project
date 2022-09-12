@@ -32,22 +32,26 @@
         <img src="images\bank logo.png" alt="bank logo" style="width:150px;height:100px;";>
       </div> 
 
-      <div class="row mx-auto" style="margin-bottom: 80px;">
+      <div class="row mx-auto">
         <div class="col col-lg-6 text-center">
-      <img src="images\cash.png" alt="bankbg" style="width:450px;height:450px;">
+      <img src="images\card.png" alt="bankbg" style="width:550px;height:550px;">
         </div>
 
         <div class="col col-lg-6 text-center mx-auto">
 <div class=" text-center" style="margin-top: 80px;">   
     
     <div class="mx-auto text-center m" >
-    <p style="font-weight: bold;font-size: 60px;" >Please Collect Your Cash</p>
+    <p style="font-weight: bold;font-size: 60px;" >Receipt</p>
+	<p style="font-size: 20px;" >ATM Transaction Id: 2409817</p>
+    <p style="font-size: 20px;" >Card Number : XXXX XXXX XXXX 3456</p>
+    <p style="font-size: 20px;" >Available Balance: 57000</p>
+    <p style="font-size: 20px;" >Withrawn Amount: 2000</p>
     </div>
     
 
         <div class="text-center " style="margin-bottom: 20px;">
-            <a href="withdraw_receipt.php">
-			<input type="submit" value="Collect Cash" class="rounded-pill btn btn-primary g">
+            <a href="collect_receipt.html">
+			<input type="submit" value="Print Recipt" class="rounded-pill btn btn-primary g">
 			</a>
         </div>
     </form>
