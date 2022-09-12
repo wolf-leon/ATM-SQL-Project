@@ -39,12 +39,12 @@
     <a href="options.html"><i class="material-icons" style="font-size:30px">list</i></a>
     <a href="end.html>"><i class="material-icons" style="font-size:30px">exit_to_app</i></a>
     <div class="x">
-        <img src="C:\Users\saphadte\Documents\atm\banklogo.png" alt="bank logo" style="width:150px;height:100px;" ;>
+        <img src="bank logo.png" alt="bank logo" style="width:150px;height:100px;" ;>
     </div>
 
     <div class="row mx-auto">
         <div class="col col-lg-6 text-center">
-            <img src="C:\Users\saphadte\Documents\atm\reset.png" alt="resetpin" style="width:450px;height:480px;">
+            <img src="reset.png" alt="resetpin" style="width:450px;height:480px;">
         </div>
 
         <div class="col col-lg-6 text-center mx-auto">

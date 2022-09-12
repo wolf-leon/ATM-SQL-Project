@@ -1,6 +1,5 @@
 <?php 
 session_start();
-
 if(isset($_POST['pbutton'])){
 
     array_key_exists('counter', $_SESSION) ? $_SESSION['counter']++ : ($_SESSION['counter'] =1);
@@ -32,6 +31,7 @@ if(isset($_POST['pbutton'])){
 	}
 	
   }
+
 ?>
 <?php 
 $host="localhost"; // Host name
@@ -44,7 +44,6 @@ $tbl_name="card"; // Table name
 // Connect to server and select database.
 $db=mysqli_connect("$host", "$username", "$password","$db_name")or die("cannot connect");
 $errors=array();
-$c=0;
 
 if (isset($_POST['pbutton'])) {
   //data sanitization to prevent SQL injection
@@ -58,22 +57,36 @@ if (isset($_POST['pbutton'])) {
   }
   if (count($errors) == 0) {
   //checking for the errors
-    $query = "SELECT * FROM $tbl_name WHERE pin='$pname' AND card_num='$_SESSION[fname]';";
+    $query = "SELECT * FROM $tbl_name WHERE pin='$pname' AND card_num='$_SESSION[fname]' AND card_stat!='0';';";
     $results = mysqli_query($db, $query);
 
     // $results = 1 means that one user with the entered Card Number exists
-    if (mysqli_num_rows($results) == 1 and $c<=3 ) {
+    if (mysqli_num_rows($results) == 1  ) {
       // Welcome message
       $_SESSION['success'] = "You have logged in!";
       header('location: options.html'); //page on which the user is sent to after logging in
     }
-    else {
-           
-                array_push($errors, "Incorrect PIN. Try Again."); 
+    else{
+      
+    array_key_exists('counter', $_SESSION) ? $_SESSION['counter']++ : ($_SESSION['counter'] =1);
 
-          
+      echo $_SESSION['counter'];
+    
+      if($_SESSION['counter']>2)
+    
+      {  $query = "UPDATE $tbl_name SET `card_stat`=0 WHERE `card_num`='$_SESSION[fname]';";
+    
+         $results = mysqli_query($db, $query);
+    
+         if (!$results || mysqli_num_rows($results) == 0) {
+    
+        header("location: perror.html");
+    
+         }
+    
+        session_destroy();
+      }
     }
   }
 }
-            
 ?>

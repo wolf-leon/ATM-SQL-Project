@@ -25,7 +25,7 @@
     </head>
 
 
-    <body style="background:linear-gradient(#f28e7e,#d9ebcc);">
+    <body style="background:linear-gradient(#f28e7e,#d9ebcc); background-attachment: fixed;">
        <!-- auth page code here -->
       
       <div class="x">
@@ -34,17 +34,26 @@
 
       <div class="row mx-auto">
         <div class="col col-lg-6 text-center">
-      <img src="images\receipt.png" alt="bankbg" style="width:700px;height:550px;">
+      <img src="images\receipt.png" alt="bankbg" style="width:520px;height:550px;">
         </div>
 
         <div class="col col-lg-6 text-center mx-auto">
 <div class=" text-center" style="margin-top: 80px;">   
-    
-    <div class="mx-auto text-center m" >
+
+    <div class="box">
+        <style type="text/css">
+            .box {
+              border: 5px solid black ;
+              width: 450px;
+              height: 570px;
+            }
+            </style>
+    <div class="mx-15 text-center m" >
+        
     <p style="font-weight: bold;font-size: 60px;" >Receipt</p>
 	<p style="font-size: 20px;" ><b>ATM Transaction Id:</b> 2409817</p>
     <p style="font-size: 20px;" ><b>Card Number :</b> XXXX XXXX XXXX 3456</p>
-    <p style="font-size: 20px;" ><b>Available Balance: 57000</b></p>
+    <p style="font-size: 40px;" ><b>Available Balance: 57000</b></p>
 	<p style="font-size: 20px;" ><b><u>Previous Transactions:</u></b></p>
 	<p style="font-size: 20px;" >Withdrawn Amount: 2000</p>
 	<p style="font-size: 20px;" >Withdrawn Amount: 5000</p>
@@ -52,7 +61,7 @@
 	<p style="font-size: 20px;" >Deposited Amount: 4000</p>
 	<p style="font-size: 20px;" >View Available Balance: 60000</p>
     </div>
-    
+    </div>>
 
         <div class="text-center " style="margin-bottom: 20px;">
             <a href="collect_receipt.html">
