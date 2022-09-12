@@ -61,9 +61,7 @@ label{
 	text-align: center;
 	font-size: medium;
 }
-<<<<<<< HEAD
 
-=======
 .transactions {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
@@ -86,4 +84,17 @@ label{
     background-color: #04AA6D;
     color: white;
  }
->>>>>>> 596d9b5d00c411b5adf74fd9a33d0b9a6fbdce55
+
+ .button {
+    background-color: #4CAF50;
+    border: none;
+    
+    color: white;
+    padding: 15px 32px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 40px 600px;
+    cursor: pointer;
+  }
