@@ -1,5 +1,6 @@
 <?php 
 session_start();
+<<<<<<< HEAD
 if(isset($_POST['pbutton'])){
 
     array_key_exists('counter', $_SESSION) ? $_SESSION['counter']++ : ($_SESSION['counter'] =1);
@@ -20,6 +21,19 @@ if(isset($_POST['pbutton'])){
 
    
 
+=======
+//form counter
+if(isset($_POST['pbutton'])){
+	array_key_exists('counter', $_SESSION) ? $_SESSION['counter']++ : ($_SESSION['counter'] =1);
+	echo $_SESSION['counter'];
+	if($_SESSION['counter']>2)
+	{
+	  header("location: service.html");
+	  session_destroy();
+  
+	}
+	
+>>>>>>> 351dd9bbae69b8c6dcf7de2d2a3ebe17c3d509e3
   }
 ?>
 <?php 
