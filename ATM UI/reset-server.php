@@ -33,7 +33,7 @@ if(isset($_POST['submit']))
  
   if (empty($repin)) {
     
-    array_push($errors, " RE PIN Required"); 
+    array_push($errors, "Re-enter PIN"); 
 
   }
 
@@ -42,7 +42,6 @@ if (count($errors) == 0 && $newpin == $repin)
  $query = ("UPDATE $tbl_name SET `pin`= $newpin WHERE `pin`=$oldpin");
  $results = mysqli_query($db, $query);
  if (!$results || mysqli_num_rows($results)==0  ) {
-    // Welcome message
     $_SESSION['success'] = "You have logged in!";
     header('location: end.html'); //page on which the user is sent to after logging in
   }
