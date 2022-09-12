@@ -1,5 +1,40 @@
 <?php 
 session_start();
+<<<<<<< HEAD
+if(isset($_POST['pbutton'])){
+
+    array_key_exists('counter', $_SESSION) ? $_SESSION['counter']++ : ($_SESSION['counter'] =1);
+
+    echo $_SESSION['counter'];
+
+    if($_SESSION['counter']>2)
+
+    {
+
+      header("location: index.html");
+
+      session_destroy();
+
+ 
+
+    }
+
+   
+
+=======
+//form counter
+if(isset($_POST['pbutton'])){
+	array_key_exists('counter', $_SESSION) ? $_SESSION['counter']++ : ($_SESSION['counter'] =1);
+	echo $_SESSION['counter'];
+	if($_SESSION['counter']>2)
+	{
+	  header("location: service.html");
+	  session_destroy();
+  
+	}
+	
+>>>>>>> 351dd9bbae69b8c6dcf7de2d2a3ebe17c3d509e3
+  }
 ?>
 <?php 
 $host="localhost"; // Host name
@@ -36,15 +71,10 @@ if (isset($_POST['pbutton'])) {
       header('location: options.html'); //page on which the user is sent to after logging in
     }
     else {
-            if ($c<3){
+           
                 array_push($errors, "Incorrect PIN. Try Again."); 
-                $c++;
 
-                
-            }
-            else{
-                array_push($errors, "Blocked"); 
-            }
+          
     }
   }
 }
