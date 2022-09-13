@@ -25,7 +25,7 @@ if (isset($_POST['pbutton'])) {
   }
   if (count($errors) == 0) {
   //checking for the errors
-    $query = "SELECT * FROM $tbl_name WHERE pin='$pname' AND card_num='$_SESSION[fname]' AND card_stat!='0';';";
+    $query = "SELECT * FROM $tbl_name WHERE pin='$pname' AND card_num='$_SESSION[fname]';";
     $results = mysqli_query($db, $query);
 
     // $results = 1 means that one user with the entered Card Number exists
