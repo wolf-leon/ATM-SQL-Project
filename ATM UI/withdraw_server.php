@@ -58,22 +58,22 @@ if($denomination_total!=$amount)
 {
 	header('Location: http://localhost/atm_system/withraw_error_mismatch.html');
 }
-elseif ($balance>=$denomination_total && $atm_cash>=$denomination_total ) {
+else if ($balance>=$denomination_total && $atm_cash>=$denomination_total ) {
     //echo "Record updated successfully";
 $query_match = "UPDATE denomination SET fifty = fifty-$fifty,hundred=hundred-$hundred,fivehundred=fivehundred-$fivehundred,
 onethousand=onethousand-$onek,twothousand=twothousand-$twok,total_balance=
 total_balance-$denomination_total WHERE card_number='$_SESSION[fname]'";
 $query_bal = "UPDATE accounts SET balance = balance-$amount WHERE card_number='$_SESSION[fname]'";
-$query_transaction="INSERT INTO transaction (atm_no,card_number,operation_id,amount,transaction_time,transaction_status) VALUES ('1','$_SESSION[fname]','$op_id','$amount','$date','1')";
+$query_transaction="INSERT INTO transactions (card_number,operation,amount,transaction_time,transaction_status) VALUES ('$_SESSION[fname]','$op_id','$amount','$date','1')";
 mysqli_query($conn,$query_transaction);
 mysqli_query($conn,$query_match);
 mysqli_query($conn,$query_bal);
 header('Location: http://localhost/atm_system/collect_cash.html');
 }
-elseif($balance<$denomination_total) {
+else if($balance<$denomination_total) {
     header('Location: http://localhost/atm_system/withdraw_error_balance.html');
 }
-elseif($atm_cash<$denomination_total) {
+else if($atm_cash<$denomination_total) {
  
 header('Location: http://localhost/atm_system/withdraw_error_atm.html');
 }
