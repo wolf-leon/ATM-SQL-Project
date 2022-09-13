@@ -33,10 +33,11 @@
 </head>
 
 
-<body style="background:linear-gradient(#8fd8d9,#9ee2b4); height: 100vh;">
+<body style="background:linear-gradient(#8fd8d9,#9ee2b4); height: 100vh; background-attachment: fixed;">
     <!-- auth page code here -->
-    <a href="index.html"><i class="material-icons" style="font-size:30px">home</i></a>
-    <a href="options.html"><i class="material-icons" style="font-size:30px">list</i></a>
+    <a href="index.html" style="color: #000000;"><i class="material-icons" style="font-size:30px">home</i></a>
+    <a href="options.html" style="color: #000000;"><i class="material-icons" style="font-size:30px">list</i></a>
+    <a href="end.html" style="color: #000000;"><i class="material-icons" style="font-size:30px">exit_to_app</i></a>
     <div class="x">
         <img src="bank logo.png" alt="bank logo" style="width:150px;height:100px;" ;>
     </div>
@@ -47,37 +48,32 @@
         </div>
 
         <div class="col col-lg-6 text-center mx-auto">
-            <div class=" text-center" style="margin-top: 80px;">
+            <div class=" text-center" style="margin-top: 70px;">
                 <div class="mx-auto text-center">
                     
-                    <form action=" " method="post">
-                     <?php include('errors.php') ?>
+                    <form action="" method="post">
+                     <?php include('errors2.php') ?>
 
-                            <label for="fname" style="font-size:20px;">Enter Old Pin</label>
-                            <div class="text-center pins" style="margin-bottom:20px;">
-                                <input type="text" id="fname" name="oldpin" placeholder="4-Digit PIN"><br>
-                            </div>
-                        </div>
-                        <div class="input_fields" >
-                            <label for="fname" style="font-size:20px;">Enter New Pin</label>
-                            <div class="text-center pins" style="margin-bottom:20px;">
-                                <input type="text" id="fname" name="newpin" placeholder="4-Digit PIN"><br>
-                            </div>
-                        </div>
-                            <label for="fname" style="font-size:20px;">Re-Enter Pin</label>
-                            <div class="text-center pins" style="margin-bottom:20px;">
-                                <input type="text" id="fname" name="repin" placeholder="4-Digit PIN"><br>
-                            </div>
-                        </div>
+                     <div class="text-center pins" style="margin-bottom:20px;padding-top: 20px">
+                        <label for="fname" style="font-size:18px; font-weight: bold; padding-right:20px">Enter Old Pin: </label>
+                        <input type="text" id="fname"  name="oldpin" placeholder="           4-Digit PIN" style="border-radius:25px;border:1px solid;"><br>
+                    </div>
+                    
+                    <div class="text-center pins" style="margin-bottom:20px;">
+                         <label for="fname" style="font-size:18px; font-weight: bold; padding-right:20px">Enter New Pin: </label>
+                            <input type="text" id="fname"  name="newpin"  placeholder="           4-Digit PIN" style="border-radius:25px;border:1px solid;"><br>
+                    </div>
+                    
+                    <div class="text-center pins" style="margin-bottom:20px;">
+                        <label for="fname" style="font-size:18px; font-weight: bold; padding-right:20px">Re-Enter Pin: </label>
+                        <input type="text" id="fname" name="repin" placeholder="           4-Digit PIN" style="border-radius:25px;border:1px solid;" ><br>
+                    </div>
+                </div>
+            </div>
 
                         <div class="text-center " style="margin-bottom: 20px;">
-                           <a href="reset.php"><input type="submit" onclick="myFunction()" name="submit" value="Submit" class="rounded-pill btn btn-primary g"></a><br><br>
-                            <input type="reset" value="Clear" class="rounded-pill btn btn-primary g">
-                            <script>
-                                function myFunction() {
-                                  confirm("Pin has been reset!");
-                                }
-                            </script> 
+                           <a href="reset.php"><input type="submit" name="submit" value="Submit" class="rounded-pill btn btn-primary" style="width: 200px; height: 40px;"></a><br><br>
+                            <input type="reset" value="Clear" class="rounded-pill btn btn-primary" style="width: 200px; height: 40px;">
                         </div>
                     </form>
                 </div>

@@ -6,7 +6,7 @@ session_start();
 $host="localhost"; // Host name
 $username="root"; // Mysql username
 $password=""; // Mysql password
-$db_name="abc"; // Database name
+$db_name="f_atmdb"; // Database name
 $tbl_name="card"; // Table name
 
 // Connect to server and select database.
