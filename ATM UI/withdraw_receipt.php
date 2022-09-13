@@ -3,9 +3,10 @@
 $host="localhost"; // Host name
 $username="root"; // Mysql username
 $password=""; // Mysql password
-$db_name="f_atmdb"; // Database name
+$db_name="atmdb"; // Database name
 $tbl_name="accounts"; // Table name
 $tb2_name="transactions"; //Table name
+
 
 // Connect to server and select database.
 $db=mysqli_connect("$host", "$username", "$password","$db_name")or die("cannot connect");
@@ -93,17 +94,18 @@ $amt=mysqli_fetch_array(($resul));
             </style>
 
             <div class="mx-15 text-center m" >
-            <p style="font-weight: bold;font-size: 50px;" ><u>RECEIPT</u></p>
+            <p style="font-weight: bold;font-size: 50px;" ><u>Withdrawal Receipt</u></p>
             <?php
-              $currentDate = new DateTime();
-              echo $currentDate>format('Y-m-d H:i:s');
+                date_default_timezone_set("Asia/Calcutta");
+                $date = date('Y-m-d H:i:s');
+              echo $date;
               ?>
             <p style="font-size: 20px;" ><b>ATM Transaction Id:</b>
             <?php echo'<style="font-weight: bold;font-size: 20px;" >'.$t['transaction_id'].'</style>';?></p>
             <p style="font-size: 20px;" ><b>Card Number :</b>
             <?php echo'<style="font-weight: bold;font-size: 20px;" >'.$cardnum['card_number'].'</style>';?></p>
             <p style="font-size: 20px;" ><b>Withdrawn Amount :</b>
-            <?php echo'<style="font-weight: bold;font-size: 20px;" >'.$c['amount'].'</style>';?></p>  
+            <?php echo'<style="font-weight: bold;font-size: 20px;" >'.$amt['amount'].'</style>';?></p>  
             <p style="font-size: 20px;" ><b>Available Balance: </b>
             <?php echo'<style="font-weight: bold;font-size: 20px;" >'.$res['balance'].'</style>';?>
             </div>
@@ -111,7 +113,7 @@ $amt=mysqli_fetch_array(($resul));
 
            <div class="text-center " style="margin-bottom: 20px;">
             <a href="collect_receipt.html">
-            <input type="submit" value="Print Recipt" class="rounded-pill btn btn-primary g">
+            <input type="submit" value="Print Recipt" class="rounded-pill btn btn-primary g" >
             </a>
            </div>
           </form>
@@ -130,5 +132,3 @@ $amt=mysqli_fetch_array(($resul));
 
     </body>
 </html>
-
-

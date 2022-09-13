@@ -56,7 +56,7 @@ if (mysqli_num_rows($resultAtm) > 0) {
 //&& $balance>=$denomination_total && $atm_cash>=$denomination_total
 if($denomination_total!=$amount)
 {
-	header('Location: http://localhost/atm_system/withraw_error_mismatch.html');
+	header('Location: http://localhost/atm_system/withdraw_error_mismatch.html');
 }
 else if ($balance>=$denomination_total && $atm_cash>=$denomination_total ) {
     //echo "Record updated successfully";
