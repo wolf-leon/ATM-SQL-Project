@@ -6,7 +6,7 @@ session_start();
 $host="localhost"; // Host name
 $username="root"; // Mysql username
 $password=""; // Mysql password
-$db_name="atmdb"; // Database name
+$db_name="f_atmdb"; // Database name
 $tbl_name="accounts"; // Table name
 
 // Connect to server and select database.
@@ -57,7 +57,7 @@ $db=mysqli_connect("$host", "$username", "$password","$db_name")or die("cannot c
 
 		if($balance > $amount){
             //deduct from account
-            $update_from = "UPDATE $tbl_name SET balance = $balance - $amount WHERE card_number= '$_SESSION[fname]';";
+            $update_from = "UPDATE $tbl_name SET balance = balance - $amount WHERE card_number= '$_SESSION[fname]';";
             $result1=mysqli_query($db,$update_from);
             if(!$result1 || mysqli_num_rows($result1)==0){
                 //Transaction complete
@@ -67,10 +67,10 @@ $db=mysqli_connect("$host", "$username", "$password","$db_name")or die("cannot c
             }
             else{
                 array_push($errors,"Transaction failed");
-                echo("");
+                //echo("");
             }
             //add to receipients acc
-            $update_to = "UPDATE $tbl_name SET balance = $balance + $amount WHERE card_number= $card_no";  
+            $update_to = "UPDATE $tbl_name SET balance = balance + $amount WHERE card_number= $card_no";  
             $result2=mysqli_query($db,$update_to);
             if(!$result2 || mysqli_num_rows($result2)==0){
                 $_SESSION['success'] = "Transaction successful";
