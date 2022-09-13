@@ -30,7 +30,7 @@ $db=mysqli_connect("$host", "$username", "$password","$db_name")or die("cannot c
 		}
 		if (count($errors) == 0) {
 		//checking for the errors
-			$query = "SELECT * FROM $tbl_name WHERE card_num='$fname' AND card_stat=1;";
+			$query = "SELECT * FROM $tbl_name WHERE card_num='$fname';";
 			$results = mysqli_query($db, $query);
 
 			// $results = 1 means that one user with the entered Card Number exists
