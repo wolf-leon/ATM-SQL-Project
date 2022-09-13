@@ -12,6 +12,26 @@ $tbl_name="accounts"; // Table name
 // Connect to server and select database.
 $db=mysqli_connect("$host", "$username", "$password","$db_name")or die("cannot connect");
 
+if (array_key_exists('counter', $_SESSION) ? $_SESSION['counter']++ : ($_SESSION['counter'] =1)){
+    
+   echo $_SESSION['counter'];
+  
+    if($_SESSION['counter']>3)
+  
+    {  $query = "UPDATE 'card' SET `card_stat`=0 WHERE `card_number`='$_SESSION[fname]';";
+  
+       $results = mysqli_query($db, $query);
+  
+       if (!$results || mysqli_num_rows($results) == 0) {
+  
+      header("location: perror.html");
+  
+       }
+  
+      session_destroy();
+    }
+  } 
+
 	
 	$errors=array();
    
@@ -74,7 +94,7 @@ $db=mysqli_connect("$host", "$username", "$password","$db_name")or die("cannot c
             $result2=mysqli_query($db,$update_to);
             if(!$result2 || mysqli_num_rows($result2)==0){
                 $_SESSION['success'] = "Transaction successful";
-                header('location: transfer_receipt.html');  //page on which the user is sent to after logging in                
+                header('location: receipt.php');  //page on which the user is sent to after logging in                
             }
             else{
                 array_push($errors,"Transaction failed");
@@ -92,25 +112,7 @@ $db=mysqli_connect("$host", "$username", "$password","$db_name")or die("cannot c
 			}
         
         
-        if (array_key_exists('counter', $_SESSION) ? $_SESSION['counter']++ : ($_SESSION['counter'] =1)){
-    
-          echo $_SESSION['counter'];
         
-          if($_SESSION['counter']>2)
-        
-          {  $query = "UPDATE 'card' SET `card_stat`=0 WHERE `card_number`='$_SESSION[fname]';";
-        
-             $results = mysqli_query($db, $query);
-        
-             if (!$results || mysqli_num_rows($results) == 0) {
-        
-            header("location: perror.html");
-        
-             }
-        
-            session_destroy();
-          }
-        } 
 
 		}
 
