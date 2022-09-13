@@ -1,3 +1,6 @@
+
+<?php include('reset-server.php') ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -32,48 +35,49 @@
 
 <body style="background:linear-gradient(#8fd8d9,#9ee2b4); height: 100vh;">
     <!-- auth page code here -->
-    <a href="index.html"></a><i class="material-icons" style="font-size:30px">home</i></a>
-    <a href="options.html"></a><i class="material-icons" style="font-size:30px">list</i></a>
-    <a href="end.html>"></a><i class="material-icons" style="font-size:30px">exit_to_app</i></a>
+    <a href="index.html"><i class="material-icons" style="font-size:30px">home</i></a>
+    <a href="options.html"><i class="material-icons" style="font-size:30px">list</i></a>
     <div class="x">
-        <img src="C:\Users\saphadte\Documents\atm\bank logo.png" alt="bank logo" style="width:150px;height:100px;" ;>
+        <img src="bank logo.png" alt="bank logo" style="width:150px;height:100px;" ;>
     </div>
 
     <div class="row mx-auto">
         <div class="col col-lg-6 text-center">
-            <img src="C:\Users\saphadte\Documents\atm\reset.png" alt="resetpin" style="width:450px;height:480px;">
+            <img src="reset.png" alt="resetpin" style="width:450px;height:480px;">
         </div>
 
         <div class="col col-lg-6 text-center mx-auto">
             <div class=" text-center" style="margin-top: 80px;">
                 <div class="mx-auto text-center">
                     
-                    <form action="authen.html" method="post">
+                    <form action=" " method="post">
+                     <?php include('errors.php') ?>
+
                             <label for="fname" style="font-size:20px;">Enter Old Pin</label>
                             <div class="text-center pins" style="margin-bottom:20px;">
-                                <input type="text" id="fname" name="fname" placeholder="4-Digit PIN"><br>
+                                <input type="text" id="fname" name="oldpin" placeholder="4-Digit PIN"><br>
                             </div>
                         </div>
                         <div class="input_fields" >
                             <label for="fname" style="font-size:20px;">Enter New Pin</label>
                             <div class="text-center pins" style="margin-bottom:20px;">
-                                <input type="text" id="fname" name="fname" placeholder="4-Digit PIN"><br>
+                                <input type="text" id="fname" name="newpin" placeholder="4-Digit PIN"><br>
                             </div>
                         </div>
                             <label for="fname" style="font-size:20px;">Re-Enter Pin</label>
                             <div class="text-center pins" style="margin-bottom:20px;">
-                                <input type="text" id="fname" name="fname" placeholder="4-Digit PIN"><br>
+                                <input type="text" id="fname" name="repin" placeholder="4-Digit PIN"><br>
                             </div>
                         </div>
 
                         <div class="text-center " style="margin-bottom: 20px;">
-                           <a href="auth.php"><input type="submit" onclick="myFunction()" value="Submit" class="rounded-pill btn btn-primary g"></a><br><br>
+                           <a href="reset.php"><input type="submit" onclick="myFunction()" name="submit" value="Submit" class="rounded-pill btn btn-primary g"></a><br><br>
                             <input type="reset" value="Clear" class="rounded-pill btn btn-primary g">
                             <script>
                                 function myFunction() {
                                   confirm("Pin has been reset!");
                                 }
-                            </script>
+                            </script> 
                         </div>
                     </form>
                 </div>
@@ -81,9 +85,7 @@
         </div>
 
     </div>
-    
-
-
+   
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
