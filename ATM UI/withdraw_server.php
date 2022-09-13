@@ -58,7 +58,7 @@ if($denomination_total!=$amount)
 {
 	header('Location: http://localhost/atm_system/withraw_error_mismatch.html');
 }
-else if ($balance>=$denomination_total && $atm_cash>=$denomination_total ) {
+elseif ($balance>=$denomination_total && $atm_cash>=$denomination_total ) {
     //echo "Record updated successfully";
 $query_match = "UPDATE denomination SET fifty = fifty-$fifty,hundred=hundred-$hundred,fivehundred=fivehundred-$fivehundred,
 onethousand=onethousand-$onek,twothousand=twothousand-$twok,total_balance=
@@ -70,10 +70,10 @@ mysqli_query($conn,$query_match);
 mysqli_query($conn,$query_bal);
 header('Location: http://localhost/atm_system/collect_cash.html');
 }
-else if($balance<$denomination_total) {
+elseif($balance<$denomination_total) {
     header('Location: http://localhost/atm_system/withdraw_error_balance.html');
 }
-else if($atm_cash<$denomination_total) {
+elseif($atm_cash<$denomination_total) {
  
 header('Location: http://localhost/atm_system/withdraw_error_atm.html');
 }
