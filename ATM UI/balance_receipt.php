@@ -3,16 +3,16 @@
 $host="localhost"; // Host name
 $username="root"; // Mysql username
 $password=""; // Mysql password
-$db_name="abc"; // Database name
+$db_name="f_atmdb"; // Database name
 $tbl_name="accounts"; // Table name
-$tb2_name="transaction"; //Table name
+$tb2_name="transactions"; //Table name
 
 // Connect to server and select database.
 $db=mysqli_connect("$host", "$username", "$password","$db_name")or die("cannot connect");
 
 session_start();
 
-$select_query="SELECT trans_id FROM $tb2_name WHERE card_number='$_SESSION[fname]';";
+$select_query="SELECT transaction_id FROM $tb2_name WHERE card_number='$_SESSION[fname]';";
 $trans= mysqli_query($db, $select_query) or die(mysqli_error($db));
 
 $t=mysqli_fetch_array(($trans));
@@ -25,7 +25,7 @@ $res=mysqli_fetch_array(($result));
 $select_query="SELECT customer_id FROM $tbl_name WHERE card_number='$_SESSION[fname]';";
 $resul= mysqli_query($db, $select_query) or die(mysqli_error($db));
 
-$c=mysqli_fetch_array(($resul));
+$customer=mysqli_fetch_array(($resul));
 
 $select_query="SELECT card_number FROM $tbl_name WHERE card_number='$_SESSION[fname]';";
 $num= mysqli_query($db, $select_query) or die(mysqli_error($db));
@@ -89,6 +89,10 @@ $cardnum=mysqli_fetch_array(($num));
 
     <div class="mx-15 text-center m" >
     <p style="font-weight: bold;font-size: 50px;" ><u>RECEIPT</u></p>
+    <?php
+     date_default_timezone_set("Asia/Kolkata");
+     echo "The time is " . date("h:i:sa");
+    ?>
     <p style="font-size: 20px;" ><b>ATM Transaction Id:</b>
     <?php echo'<style="font-weight: bold;font-size: 20px;" >'.$t['trans_id'].'</style>';?></p>
     <p style="font-size: 20px;" ><b>Card Number :</b>
