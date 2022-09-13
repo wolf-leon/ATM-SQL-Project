@@ -1,6 +1,7 @@
 <?php
 include("config.php");
-$result=mysqli_query($db,"SELECT*FROM transactions order by transaction_id DESC")
+session_start();
+$result=mysqli_query($db,"SELECT*FROM transactions where card_number=$_SESSION('fname') order by transaction_time desc limit 2")
 ?>
 
 <!DOCTYPE html>
@@ -22,26 +23,22 @@ $result=mysqli_query($db,"SELECT*FROM transactions order by transaction_id DESC"
         <!-- bootstrap cdn link -->
         <!-- CSS only -->
 <table class="transactions" border=2> 
-<th>Transaction ID</th>
-
-<th>Card Number</th>
-  <th>Operation Type</th>
-  <th>Amount </th>
-  <th>Transaction Time</th>
+  <th>Transaction ID</th>
+  <th>Card Number</th>
+  <th>Operation </th>
+  <th>Amount</th>
+  <th> Transaction Time</th>
   <th> Transaction Status</th>
+
 <?php
 while($res=mysqli_fetch_array(($result))){
   echo '<tr>';
   echo'<td>'.$res['transaction_id'].'</td>';
-
   echo'<td>'.$res['card_number'].'</td>';
   echo'<td>'.$res['operation'].'</td>';
   echo'<td>'.$res['amount'].'</td>';
   echo'<td>'.$res['transaction_time'].'</td>';
   echo'<td>'.$res['transaction_status'].'</td>';
-
-
-
   echo '</tr>';
 }
 

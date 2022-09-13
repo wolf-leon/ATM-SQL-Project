@@ -2,7 +2,7 @@
 $host="localhost"; // Host name
 $username="root"; // Mysql username
 $password=""; // Mysql password
-$db_name="f_atmdb"; // Database name
+$db_name="t_atmdb"; // Database name
 $tbl_name="denomination"; // Table name
 
 

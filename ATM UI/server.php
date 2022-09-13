@@ -1,16 +1,9 @@
 <?php 
 session_start();
+include("config.php");
 ?>
 
 <?php
-$host="localhost"; // Host name
-$username="root"; // Mysql username
-$password=""; // Mysql password
-$db_name="abc"; // Database name
-$tbl_name="card"; // Table name
-
-// Connect to server and select database.
-$db=mysqli_connect("$host", "$username", "$password","$db_name")or die("cannot connect");
 
 	// declaring and hoisting the variables
 	//$fname=$_POST['fname'];
@@ -30,7 +23,7 @@ $db=mysqli_connect("$host", "$username", "$password","$db_name")or die("cannot c
 		}
 		if (count($errors) == 0) {
 		//checking for the errors
-			$query = "SELECT * FROM $tbl_name WHERE card_num='$fname';";
+			$query = "SELECT * FROM card WHERE card_number='$fname';";
 			$results = mysqli_query($db, $query);
 
 			// $results = 1 means that one user with the entered Card Number exists
