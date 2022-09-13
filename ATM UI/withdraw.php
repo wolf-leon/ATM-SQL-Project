@@ -1,4 +1,4 @@
-<?php include ('w_server.php') ?>
+<?php include ('withdraw_server.php') ?>
 <!DOCTYPE html>
 <html>
     <head>
