@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
-
+*{font-family: 'Oswald', sans-serif;}
 .m{
     font-family: 'Oswald', sans-serif;
     font-size: 40px;
@@ -61,7 +61,10 @@ label{
 	text-align: center;
 	font-size: medium;
 }
+<<<<<<< HEAD
+=======
 
+>>>>>>> fbe1c84f7b63358e0fd5c63b022f9ec36d0345d3
 .transactions {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
@@ -84,7 +87,10 @@ label{
     background-color: #04AA6D;
     color: white;
  }
+<<<<<<< HEAD
+=======
 
+>>>>>>> fbe1c84f7b63358e0fd5c63b022f9ec36d0345d3
  .button {
     background-color: #4CAF50;
     border: none;
@@ -98,3 +104,7 @@ label{
     margin: 40px 600px;
     cursor: pointer;
   }
+<<<<<<< HEAD
+ 
+=======
+>>>>>>> fbe1c84f7b63358e0fd5c63b022f9ec36d0345d3

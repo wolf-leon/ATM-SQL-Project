@@ -25,74 +25,33 @@
     </head>
 
 
-    <body style="background:linear-gradient(#ffb6c1,#cfade6);">
+    <body style="background:linear-gradient(#ffb6c1,#ADD8E6);">
        <!-- auth page code here -->
       
       <div class="x">
-      
-      <a href="index.html">
         <img src="images\bank logo.png" alt="bank logo" style="width:150px;height:100px;";>
-      </a>
-      </div>
-      <a href="table.php">
-          <p style="size:60px; float: left ;">View Logs</p>
-    </a>
-          </body>
-      
+      </div> 
 
       <div class="row mx-auto">
         <div class="col col-lg-6 text-center">
-      <img src="images\insertden.png" alt="denbg" style="width:550px;height:550px;">
+      <img src="images\card.png" alt="bankbg" style="width:550px;height:550px;">
         </div>
 
         <div class="col col-lg-6 text-center mx-auto">
 <div class=" text-center" style="margin-top: 80px;">   
     
     <div class="mx-auto text-center m" >
-    <p style="font-weight: bold;font-size: 60px;" >Enter Number of Denominations</p>
+    <p style="font-weight: bold;font-size: 60px;" >Enter Card Number</p>
     </div>
     <div class="mx-auto text-center" >
-    <form action="index.html" method="post" >
+    <form action="auth.php" method="post" >
      <div class="text-center" style="margin-bottom:20px;">
-        <form id="survey-form">
-            <div class="form-group" style="margin-bottom: 20px;">
-              <label id="name-label" for="2000">2000</label>
-              <input
-                type="number"
-                name="name"
-                required
-              />
-            </div>
-                <label id="name-label" for="1000">1000</label>
-                <input
-                  type="number"
-                  name="name"
-                  required
-                />
-              </div><div class="form-group" style="margin-bottom: 20px;">
-                <label id="name-label" for="500">500</label>
-                <input
-                  type="number"
-                  name="name"
-                  required
-                />
-              </div><div class="form-group" style="margin-bottom: 20px;">
-                <label id="name-label" for="100">100</label>
-                <input
-                  type="number"
-                  name="name"
-                  required
-                />
-              </div><div class="form-group"style="margin-bottom: 20px;">
-                <label id="name-label" for="50">50</label>
-                <input
-                  type="number"
-                  name="name"
-                  required
-                />
-              </div>
+        <input type="text" id="fname" name="fname" placeholder=" Card Number" ><br>
+     </div>
+
         <div class="text-center " style="margin-bottom: 20px;">
-            <input type="submit" value="Enter" class="rounded-pill btn btn-primary g">
+        
+          <input type="submit" value="Enter" class="rounded-pill btn btn-primary g">
         </div>
     </form>
 </div>
