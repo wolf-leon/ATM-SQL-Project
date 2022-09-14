@@ -13,7 +13,7 @@ $db=mysqli_connect("$host", "$username", "$password","$db_name")or die("cannot c
 
 session_start();
 
-$select_query="SELECT transaction_id FROM $tb2_name WHERE card_number='$_SESSION[fname]';";
+$select_query="SELECT transaction_id FROM $tb2_name ORDER BY transaction_id DESC LIMIT 1";
 $trans= mysqli_query($db, $select_query) or die(mysqli_error($db));
 
 $t=mysqli_fetch_array(($trans));
@@ -33,7 +33,8 @@ $result= mysqli_query($db, $select_query) or die(mysqli_error($db));
 
 $res=mysqli_fetch_array(($result));
 
-$select_query="SELECT amount FROM $tb2_name WHERE card_number='$_SESSION[fname]';";
+$select_query="SELECT amount FROM $tb2_name ORDER BY transaction_id DESC LIMIT 1";
+
 $resul= mysqli_query($db, $select_query) or die(mysqli_error($db));
 
 $amt=mysqli_fetch_array(($resul));
@@ -97,8 +98,8 @@ $amt=mysqli_fetch_array(($resul));
             <p style="font-weight: bold;font-size: 50px;" ><u>Withdrawal Receipt</u></p>
             <?php
                 date_default_timezone_set("Asia/Calcutta");
-                $date = date('Y-m-d H:i:s');
-              echo $date;
+                $date = $_SESSION['date'];
+                echo '<span style="font-size: 15pt"><b>Date:</b> ' . $date . '   </span>';
               ?>
             <p style="font-size: 20px;" ><b>ATM Transaction Id:</b>
             <?php echo'<style="font-weight: bold;font-size: 20px;" >'.$t['transaction_id'].'</style>';?></p>
@@ -109,9 +110,9 @@ $amt=mysqli_fetch_array(($resul));
             <p style="font-size: 20px;" ><b>Available Balance: </b>
             <?php echo'<style="font-weight: bold;font-size: 20px;" >'.$res['balance'].'</style>';?>
             </div>
-           </div>>
+           </div>
 
-           <div class="text-center " style="margin-bottom: 20px;">
+           <div class="text-center " style="margin: 10px 10px;">
             <a href="collect_receipt.html">
             <input type="submit" value="Print Recipt" class="rounded-pill btn btn-primary g" >
             </a>
@@ -132,3 +133,4 @@ $amt=mysqli_fetch_array(($resul));
 
     </body>
 </html>
+
