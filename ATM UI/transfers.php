@@ -28,7 +28,7 @@
 
 
     <body style="background:linear-gradient(#D5F7E6, #63DFA8); background-attachment:fixed;">
-       <!--  transfer of funds page code here -->
+       <!-- transfer of funds page code here -->
        <a href="index.html" style="color: #000000;"><i class="material-icons" style="font-size:30px; float: left;">home</i></a>
        <a href="options.html" style="color: #000000;"><i class="material-icons" style="font-size:30px; float: left;">list</i></a>
        <a href="end.html" style="color: #000000;"><i class="material-icons" style="font-size:30px; float: left;">exit_to_app</i></a>
