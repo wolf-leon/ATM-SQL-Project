@@ -18,13 +18,13 @@ if (array_key_exists('counter', $_SESSION) ? $_SESSION['counter']++ : ($_SESSION
   
     if($_SESSION['counter']>3)
   
-    {  $query = "UPDATE 'card' SET `card_stat`=0 WHERE `card_number`='$_SESSION[fname]';";
+    {  $query = "UPDATE 'card' SET `card_stat`=0 WHERE `card_number`=' $_SESSION[fname]';";
   
        $results = mysqli_query($db, $query);
   
        if (!$results || mysqli_num_rows($results) == 0) {
-  
-      header("location: perror.html");
+        error_log("Error occurred as customer three attempts were made to transfer funds");
+        header("location: perror.html");
   
        }
   
@@ -34,12 +34,16 @@ if (array_key_exists('counter', $_SESSION) ? $_SESSION['counter']++ : ($_SESSION
 
 	
 	$errors=array();
-   
+
+    date_default_timezone_set("Asia/Calcutta");
+    $date = date('Y-m-d H:i:s'); 
+    $_SESSION['date']=$date;
+    echo $_SESSION['date'];  
  
 
 	// verifying card number
 	if (isset($_POST['submit'])) {
-		//data sanitization to prevent SQL injection
+		
 		$card_no = mysqli_real_escape_string($db, $_POST['card_no']);
         $amount = mysqli_real_escape_string($db,$_POST['amount']);
 
@@ -47,11 +51,13 @@ if (array_key_exists('counter', $_SESSION) ? $_SESSION['counter']++ : ($_SESSION
 		if (empty($card_no)) {
 			
 			array_push($errors, "Card Number Required"); 
+            error_log("Error occurred as customer did not enter recipient's card number while transferring funds");
 
 		}
         if (empty($amount)) {
     
             array_push($errors, "Amount Required"); 
+            error_log("Error occurred as customer did not enter amount while transferring funds");
         
           }
           
@@ -63,9 +69,9 @@ if (array_key_exists('counter', $_SESSION) ? $_SESSION['counter']++ : ($_SESSION
             
 
 			// $results = 1 means that one user with the entered Card Number exists
-			if (mysqli_num_rows($results) == 1) {
-				//get current balance amount of the customer's account
-		$resultAmount = mysqli_query($db, "SELECT balance FROM $tbl_name WHERE card_number='$_SESSION[fname]';");
+		if (mysqli_num_rows($results) == 1) {
+			//get current balance amount of the customer's account
+		$resultAmount = mysqli_query($db, "SELECT balance FROM $tbl_name WHERE card_number=' $_SESSION[fname]';");
         if(!$resultAmount){
             die(mysqli_error($db));
         }
@@ -75,47 +81,31 @@ if (array_key_exists('counter', $_SESSION) ? $_SESSION['counter']++ : ($_SESSION
         }
     }
 
-		if($balance > $amount){
+    if($balance > $amount){
             //deduct from account
             $update_from = "UPDATE $tbl_name SET balance = balance - $amount WHERE card_number= '$_SESSION[fname]';";
-            $result1=mysqli_query($db,$update_from);
-            if(!$result1 || mysqli_num_rows($result1)==0){
-                //Transaction complete
-                $_SESSION['success'] = "Transaction successful";
-                header('location: options.html'); //page on which the user is sent to after logging in
-                                
-            }
-            else{
-                array_push($errors,"Transaction failed");
-                //echo("");
-            }
+            mysqli_query($db,$update_from);
+            
             //add to receipients acc
             $update_to = "UPDATE $tbl_name SET balance = balance + $amount WHERE card_number= $card_no";  
-            $result2=mysqli_query($db,$update_to);
-            if(!$result2 || mysqli_num_rows($result2)==0){
-                $_SESSION['success'] = "Transaction successful";
-                header('location: receipt.php');  //page on which the user is sent to after logging in                
-            }
-            else{
-                array_push($errors,"Transaction failed");
-                echo("");
-            }
+            mysqli_query($db,$update_to);
+
+            //inserting log in transaction table
+            $query_transaction="INSERT INTO transactions (card_number,operation,amount,transaction_time,transaction_status) VALUES (' $_SESSION[fname]','2','$amount','$date','1')"; 
+            mysqli_query($db,$query_transaction);
+            header('location: transfer_receipt.php'); 
+            
         } else{          
 			array_push($errors, "Insufficient amount to make transfer"); 
-			return false;
-		
+            $query_transaction="INSERT INTO transactions (card_number,operation,amount,transaction_time,transaction_status) VALUES (' $_SESSION[fname]','2','$amount','$date','0')"; 
+            mysqli_query($db,$query_transaction);
+            header('location: transfer_error.html'); 	
 		} 	          
 			
 		}else {
             array_push($errors, "Card Number doesnt exist or Has been blocked.Please Contact the bank"); 
             //if the Card Number doesn't match
-			}
-        
-        
-        
-
 		}
-
-		
-	} 
+    }
+} 
 ?>
