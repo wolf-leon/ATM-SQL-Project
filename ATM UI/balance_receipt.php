@@ -21,6 +21,11 @@ $num= mysqli_query($db, $select_query) or die(mysqli_error($db));
 
 $cardnum=mysqli_fetch_array(($num));
 
+$select_query="SELECT transaction_time FROM transactions WHERE card_number='$_SESSION[fname]';";
+$date= mysqli_query($db, $select_query) or die(mysqli_error($db));
+
+$date=mysqli_fetch_array(($date));
+
 
 
 ?>
@@ -47,6 +52,8 @@ $cardnum=mysqli_fetch_array(($num));
                     <div class="mx-15 text-center m">
 
                         <p style="font-weight: bold;font-size: 50px;"><u>RECEIPT</u></p>
+                        <p style="font-size: 30px;"><b>Date: </b>
+                            <?php echo'<style="font-weight: bold;font-size: 30px;" >'.$date['transaction_time'].'</style>';?>
                         <p style="font-size: 20px;"><b>ATM Transaction Id:</b>
                             <?php echo'<style="font-weight: bold;font-size: 20px;" >'.$t['transaction_id'].'</style>';?>
                         </p>
@@ -55,6 +62,7 @@ $cardnum=mysqli_fetch_array(($num));
                         </p>
                         <p style="font-size: 30px;"><b>Available Balance: </b>
                             <?php echo'<style="font-weight: bold;font-size: 30px;" >'.$res['balance'].'</style>';?>
+                            
                     </div>
                 </div>>
 

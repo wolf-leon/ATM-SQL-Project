@@ -57,6 +57,11 @@ while($res=mysqli_fetch_array(($result))){
     bottom: 0;
     right: 0;
     width: 100%;">1. Withdraw 2. Transfer 3. View Balance 4. Deposit</p>
+     <p style=" position: fixed;
+    bottom: 0;
+    padding-left: 90%;
+    width: 100%;">1. Success 2. Failed</p>
+
 
 
 

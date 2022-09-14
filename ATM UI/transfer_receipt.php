@@ -3,7 +3,7 @@
 $host="localhost"; // Host name
 $username="root"; // Mysql username
 $password=""; // Mysql password
-$db_name="f_atmdb"; // Database name
+$db_name="t_atmdb"; // Database name
 $tbl_name="accounts"; // Table name
 $tb2_name="transactions"; //Table name
 
@@ -13,20 +13,20 @@ $db=mysqli_connect("$host", "$username", "$password","$db_name")or die("cannot c
 
 session_start();
 
-$select_query="SELECT transaction_id FROM $tb2_name ORDER BY transaction_id DESC LIMIT 1";
+$select_query="SELECT transaction_id FROM transactions ORDER BY transaction_id DESC LIMIT 1";
 $trans= mysqli_query($db, $select_query) or die(mysqli_error($db));
 $t=mysqli_fetch_array(($trans));
 
 
-$select_query="SELECT card_number FROM $tbl_name WHERE card_number='$_SESSION[fname]';";
+$select_query="SELECT card_number FROM accounts WHERE card_number='$_SESSION[fname]';";
 $num= mysqli_query($db, $select_query) or die(mysqli_error($db));
 $cardnum=mysqli_fetch_array(($num));
 
-$select_query="SELECT balance FROM $tbl_name WHERE card_number='$_SESSION[fname]';";
+$select_query="SELECT balance FROM accounts WHERE card_number='$_SESSION[fname]';";
 $result= mysqli_query($db, $select_query) or die(mysqli_error($db));
 $res=mysqli_fetch_array(($result));
 
-$select_query="SELECT amount FROM $tb2_name ORDER BY transaction_id DESC LIMIT 1";
+$select_query="SELECT amount FROM transactions ORDER BY transaction_id DESC LIMIT 1";
 $resul= mysqli_query($db, $select_query) or die(mysqli_error($db));
 $amt=mysqli_fetch_array(($resul));
 

@@ -6,7 +6,7 @@ session_start();
 $host="localhost"; // Host name
 $username="root"; // Mysql username
 $password=""; // Mysql password
-$db_name="f_atmdb"; // Database name
+$db_name="t_atmdb"; // Database name
 $tbl_name="accounts"; // Table name
 
 // Connect to server and select database.
@@ -14,7 +14,6 @@ $db=mysqli_connect("$host", "$username", "$password","$db_name")or die("cannot c
 
 if (array_key_exists('counter', $_SESSION) ? $_SESSION['counter']++ : ($_SESSION['counter'] =1)){
     
-   echo $_SESSION['counter'];
   
     if($_SESSION['counter']>3)
   
@@ -38,7 +37,6 @@ if (array_key_exists('counter', $_SESSION) ? $_SESSION['counter']++ : ($_SESSION
     date_default_timezone_set("Asia/Calcutta");
     $date = date('Y-m-d H:i:s'); 
     $_SESSION['date']=$date;
-    echo $_SESSION['date'];  
  
 
 	// verifying card number
@@ -63,7 +61,7 @@ if (array_key_exists('counter', $_SESSION) ? $_SESSION['counter']++ : ($_SESSION
           
 		if (count($errors) == 0) {
 		//checking for the errors
-			$query = "SELECT * FROM $tbl_name WHERE card_number='$card_no';";
+			$query = "SELECT * FROM accounts WHERE card_number='$card_no';";
 			$results = mysqli_query($db, $query);
 
             
@@ -71,7 +69,7 @@ if (array_key_exists('counter', $_SESSION) ? $_SESSION['counter']++ : ($_SESSION
 			// $results = 1 means that one user with the entered Card Number exists
 		if (mysqli_num_rows($results) == 1) {
 			//get current balance amount of the customer's account
-		$resultAmount = mysqli_query($db, "SELECT balance FROM $tbl_name WHERE card_number=' $_SESSION[fname]';");
+		$resultAmount = mysqli_query($db, "SELECT balance FROM accounts WHERE card_number=' $_SESSION[fname]';");
         if(!$resultAmount){
             die(mysqli_error($db));
         }
@@ -83,11 +81,11 @@ if (array_key_exists('counter', $_SESSION) ? $_SESSION['counter']++ : ($_SESSION
 
     if($balance > $amount){
             //deduct from account
-            $update_from = "UPDATE $tbl_name SET balance = balance - $amount WHERE card_number= '$_SESSION[fname]';";
+            $update_from = "UPDATE accounts SET balance = balance - $amount WHERE card_number= '$_SESSION[fname]';";
             mysqli_query($db,$update_from);
             
             //add to receipients acc
-            $update_to = "UPDATE $tbl_name SET balance = balance + $amount WHERE card_number= $card_no";  
+            $update_to = "UPDATE accounts SET balance = balance + $amount WHERE card_number= $card_no";  
             mysqli_query($db,$update_to);
 
             //inserting log in transaction table

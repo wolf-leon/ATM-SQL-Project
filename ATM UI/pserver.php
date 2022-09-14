@@ -25,8 +25,8 @@ if (isset($_POST['pbutton'])) {
 
 
 //checking for expiry
-$Equery = "SELECT * FROM card WHERE expiry_date >=now() and card_number='$_SESSION[fname]';";
-$eresults = mysqli_query($db,$Equery);
+$query = "SELECT * FROM card WHERE expiry_date >=now() and card_number='$_SESSION[fname]';";
+$eresults = mysqli_query($db,$query);
 if (mysqli_num_rows($eresults) == 1  ) {
   $_SESSION['success'] = "You have logged in!";
   header('location: options.html');

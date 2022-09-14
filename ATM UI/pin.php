@@ -28,7 +28,7 @@
 
                             <input name="pbutton" type="submit" value="Enter" class="rounded-pill btn btn-primary g">
                         </div>
-                        <a href="reset.php">Forgot Pin. Reset Now.</a>
+                        <a href="reset.php">Reset Pin.</a>
 
                     </form>
                 </div>

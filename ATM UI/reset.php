@@ -69,17 +69,16 @@
         </script>
         <script>
              function myFunction(delUrl) {
-                if(confirm("Are you sure you want to change the Pin?")){
+                if(confirm("Are you sure you want to change the Pin?"))
                 {
                     document.location = delUrl;
                     
                 } 
-                 else
-                {
+                 else{
                     document.location = 'reset.php';
                 }        
                 } 
-            }
+            
       </script>
     </body>
 
