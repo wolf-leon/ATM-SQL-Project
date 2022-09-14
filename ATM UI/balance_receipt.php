@@ -3,7 +3,9 @@ include("config.php");
 
 session_start();
 
-$select_query="SELECT transaction_id FROM transactions WHERE card_number='$_SESSION[fname]';";
+$select_query="SELECT transaction_id FROM transactions where card_number='$_SESSION[fname]' ORDER BY transaction_id DESC LIMIT 1 ;";
+
+
 $trans= mysqli_query($db, $select_query) or die(mysqli_error($db));
 
 $t=mysqli_fetch_array(($trans));

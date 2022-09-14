@@ -22,10 +22,24 @@ if (isset($_POST['pbutton'])) {
 
     // $results = 1 means that one user with the entered Card Number exists
     if (mysqli_num_rows($results) == 1  ) {
-      // Welcome message
-      $_SESSION['success'] = "You have logged in!";
-      header('location: options.html'); //page on which the user is sent to after logging in
-    }
+
+
+//checking for expiry
+$Equery = "SELECT * FROM card WHERE expiry_date >=now() and card_number='$_SESSION[fname]';";
+$eresults = mysqli_query($db,$Equery);
+if (mysqli_num_rows($eresults) == 1  ) {
+  $_SESSION['success'] = "You have logged in!";
+  header('location: options.html');
+
+}
+else{
+  array_push($errors, "Your card is expired. "); 
+  $squery = "UPDATE card SET `card_status`=3 WHERE `card_number`='$_SESSION[fname]';";
+    
+  $results = mysqli_query($db, $squery);
+
+}
+}
     else{
       
     array_key_exists('counter', $_SESSION) ? $_SESSION['counter']++ : ($_SESSION['counter'] =1);
@@ -34,7 +48,7 @@ if (isset($_POST['pbutton'])) {
     
       if($_SESSION['counter']>2)
     
-      {  $query = "UPDATE $tbl_name SET `card_stat`=0 WHERE `card_num`='$_SESSION[fname]';";
+      {  $query = "UPDATE card SET `card_status`=2 WHERE `card_number`='$_SESSION[fname]';";
     
          $results = mysqli_query($db, $query);
     
