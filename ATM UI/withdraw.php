@@ -1,71 +1,54 @@
+<?php include('withdraw_server.php')?>
 <?php
-session_start();
-
-$host="localhost"; // Host name
-$username="root"; // Mysql username
-$password=""; // Mysql password
-$db_name="atmdb"; // Database name
-$tbl_name="accounts"; // Table name
-$tb2_name="transactions"; //Table name
-
-
-// Connect to server and select database.
-$conn=mysqli_connect("$host", "$username", "$password","$db_name")or die("cannot connect");
-
-/*$select_query="SELECT twothousand FROM denomination where atm_no='1'";
-$result= mysqli_query($conn, $select_query) or die(mysqli_error($conn));
-$twok=mysqli_fetch_array(($result));*/
-$resultAmount = mysqli_query($conn,"SELECT twothousand FROM denomination where atm_no='1'");
-  if(!$resultAmount){
-      die(mysqli_error($conn));
-  }
-  if (mysqli_num_rows($resultAmount) > 0) {
-  while($rowData = mysqli_fetch_array($resultAmount)){
-      $twok=$rowData["twothousand"];
-  }
+$resultAmount = mysqli_query($db,"SELECT twothousand FROM denomination where atm_no='1'");
+if(!$resultAmount){
+    die(mysqli_error($db));
+}
+if (mysqli_num_rows($resultAmount) > 0) {
+while($rowData = mysqli_fetch_array($resultAmount)){
+    $twok=$rowData["twothousand"];
+}
 }
 
-$resultAmount = mysqli_query($conn,"SELECT onethousand FROM denomination where atm_no='1'");
-  if(!$resultAmount){
-      die(mysqli_error($conn));
-  }
-  if (mysqli_num_rows($resultAmount) > 0) {
-  while($rowData = mysqli_fetch_array($resultAmount)){
-      $onek=$rowData["onethousand"];
-  }
+$resultAmount = mysqli_query($db,"SELECT onethousand FROM denomination where atm_no='1'");
+if(!$resultAmount){
+    die(mysqli_error($db));
+}
+if (mysqli_num_rows($resultAmount) > 0) {
+while($rowData = mysqli_fetch_array($resultAmount)){
+    $onek=$rowData["onethousand"];
+}
 }
 
-$resultAmount = mysqli_query($conn,"SELECT fivehundred FROM denomination where atm_no='1'");
-  if(!$resultAmount){
-      die(mysqli_error($conn));
-  }
-  if (mysqli_num_rows($resultAmount) > 0) {
-  while($rowData = mysqli_fetch_array($resultAmount)){
-      $fivehundred=$rowData["fivehundred"];
-  }
+$resultAmount = mysqli_query($db,"SELECT fivehundred FROM denomination where atm_no='1'");
+if(!$resultAmount){
+    die(mysqli_error($db));
+}
+if (mysqli_num_rows($resultAmount) > 0) {
+while($rowData = mysqli_fetch_array($resultAmount)){
+    $fivehundred=$rowData["fivehundred"];
+}
 }
 
-$resultAmount = mysqli_query($conn,"SELECT hundred FROM denomination where atm_no='1'");
-  if(!$resultAmount){
-      die(mysqli_error($conn));
-  }
-  if (mysqli_num_rows($resultAmount) > 0) {
-  while($rowData = mysqli_fetch_array($resultAmount)){
-      $hundred=$rowData["hundred"];
-  }
+$resultAmount = mysqli_query($db,"SELECT hundred FROM denomination where atm_no='1'");
+if(!$resultAmount){
+    die(mysqli_error($db));
+}
+if (mysqli_num_rows($resultAmount) > 0) {
+while($rowData = mysqli_fetch_array($resultAmount)){
+    $hundred=$rowData["hundred"];
+}
 }
 
-$resultAmount = mysqli_query($conn,"SELECT fifty FROM denomination where atm_no='1'");
-  if(!$resultAmount){
-      die(mysqli_error($conn));
-  }
-  if (mysqli_num_rows($resultAmount) > 0) {
-  while($rowData = mysqli_fetch_array($resultAmount)){
-      $fifty=$rowData["fifty"];
-  }
+$resultAmount = mysqli_query($db,"SELECT fifty FROM denomination where atm_no='1'");
+if(!$resultAmount){
+    die(mysqli_error($db));
 }
-
-
+if (mysqli_num_rows($resultAmount) > 0) {
+while($rowData = mysqli_fetch_array($resultAmount)){
+    $fifty=$rowData["fifty"];
+}
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -92,14 +75,15 @@ $resultAmount = mysqli_query($conn,"SELECT fifty FROM denomination where atm_no=
                 <img src="images\withdraw.png" alt="withdraw_image" style="width:500px;height:500px;">
           </div>
           <div class="col-lg-6">
-            <form action="withdraw_server.php" method="post" style="margin-top: 10px;" onsubmit="return errorMessage() ;">
+            <form action="withdraw.php" method="post" style="margin-top: 10px;"> 
+            <?php include('errors.php') ?>
                 <div class="row mb-2 text-center ">
                 <h4><b>Enter the amount</b></h4>
                 </div>
                 <div class="row mby-2">
                     <label for="amount" class="col-sm-3 col-form-label"></label>
                     <div class="col-sm-6">
-                      <input type="number" class="form-control" name=amount id="amount">
+                      <input type="number" class="form-control" name=amount id="amount" required>
                     </div>
                 </div>
                 <div class="row mt-4 mb-2 text-center">
@@ -108,31 +92,31 @@ $resultAmount = mysqli_query($conn,"SELECT fifty FROM denomination where atm_no=
                 <div class="row mb-3 ">
                     <label for="twok" class="col-sm-3 col-form-label"><b>2000:</b></label>
                     <div class="col-sm-6">
-                    <input type="number" name="twok" id="twok" class="form-control">
+                    <input type="number" name="twok" id="twok" class="form-control" required>
                     </div>
                 </div>
                 <div class="row mb-3 ">
                     <label for="onek" class="col-sm-3 col-form-label"><b>1000:</b></label>
                     <div class="col-sm-6">
-                    <input type="number" name="onek" id="onek" class="form-control">
+                    <input type="number" name="onek" id="onek" class="form-control" required>
                     </div>
                 </div>
                 <div class="row mb-3 ">
                     <label for="fivehundred" class="col-sm-3 col-form-label"><b>500:</b></label>
                     <div class="col-sm-6">
-                    <input type="number" name="fivehundred" id="fivehundred" class="form-control">
+                    <input type="number" name="fivehundred" id="fivehundred" class="form-control" required>
                     </div>
                 </div>
                 <div class="row mb-3 ">
                     <label for="hundred" class="col-sm-3 col-form-label"><b>100:</b></label>
                     <div class="col-sm-6">
-                    <input type="number" name="hundred" id="hundred" class="form-control">
+                    <input type="number" name="hundred" id="hundred" class="form-control" required>
                     </div>
                 </div>
                 <div class="row mb-3 ">
                     <label for="fifty" class="col-sm-3 col-form-label"><b>50:</b></label>
                     <div class="col-sm-6">
-                    <input type="number" name="fifty" id="fifty" class="form-control">
+                    <input type="number" name="fifty" id="fifty" class="form-control" required>
                     </div>
                 </div>
                 <div class="row mb-3 text-center">
@@ -143,11 +127,11 @@ $resultAmount = mysqli_query($conn,"SELECT fifty FROM denomination where atm_no=
                 </div>
                 <div class="row mb-3 text-center">
                     <div class="col-sm-12">
-                    <input type="submit" value="Submit" class="rounded-pill btn btn-primary" style="width: 100px;height: 50px;" >
+                    <input type="submit" name="submit" value="Submit" onclick="return errorMessage()" class="rounded-pill btn btn-primary" style="width: 100px;height: 50px;">
                     <input type="reset" value="Reset" class="rounded-pill btn btn-primary" style="width: 100px;height: 50px;">
                     <input type="button" value="Suggest" class="rounded-pill btn btn-primary" style="width: 100px;height: 50px;" onclick="suggestDenominations()">
                 </div>
-                </div>
+                </div> 
                 </div>     
             </div>
             </form>
@@ -176,7 +160,7 @@ $resultAmount = mysqli_query($conn,"SELECT fifty FROM denomination where atm_no=
 
 
   if(denomination_total_atm<amount) 
-  document.getElementById("error").innerHTML ="<b>Insufficient Balance</b>";
+  document.getElementById("error").innerHTML ="<b>"+denomination_total_atm+"Insufficient ATM cash</b>";
   else
   document.getElementById("error").innerHTML ="";
   if(amount==0) 
@@ -231,22 +215,6 @@ if(denomination_total_atm>amount && amount!=0)
 //scores.indexOf(10)
 document.getElementById("suggest").innerHTML ="<b>Suggested denominations are</b>:<br>2000: "+suggested_amount[0]+"<br>1000: "+suggested_amount[1]+"<br>500:   "+suggested_amount[2]+"<br>100:   "+suggested_amount[3]+"<br>50:    "+suggested_amount[4];}
 
-    }
-
-function errorMessage() {
-        var amount = document.getElementById("amount").value;
-        var onek = document.getElementById("onek").value;
-        var twok = document.getElementById("twok").value;
-        var hundred = document.getElementById("hundred").value;
-        var fivehundred = document.getElementById("fivehundred").value;
-        var fifty = document.getElementById("fifty").value;
-        if (amount==0)
-        {
-            error.innerHTML = "<span style='color: red;'>"+
-                        "Please enter the amount</span>"
-        } else {
-            error.innerHTML = ""
-        }
     }
 
 </script>
