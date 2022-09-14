@@ -51,10 +51,8 @@
                 </div>
 
                 <div class="text-center " style="margin-bottom: 20px;">
-                    <a href="reset.php"><input type="submit" name="submit" value="Submit"
-                            class="rounded-pill btn btn-primary" style="width: 200px; height: 40px;"></a><br><br>
-                    <input type="reset" value="Clear" class="rounded-pill btn btn-primary"
-                        style="width: 200px; height: 40px;">
+                    <a href="reset.php"><input type="submit" name="submit" value="Submit" class="rounded-pill btn btn-primary" style="width: 200px; height: 40px;"></a><br><br>
+                    <input type="reset" value="Clear" class="rounded-pill btn btn-primary" style="width: 200px; height: 40px;">
                 </div>
                 </form>
             </div>
