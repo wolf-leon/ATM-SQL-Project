@@ -24,20 +24,20 @@ include("config.php");?>
     $results = mysqli_query($db, $query);
     if ($results) {
       echo "<script>
-      var z = confirm('Confirm Pin?');
-      if (z == false) {
-        window.location = 'reset.php';
-        } 
-      else
       {
         alert('Pin was reset');
       }
       </script>";
-      //echo "<script>alert('Pin has been succesfully reset');</script>";
-      //echo ($_SESSION['success']);
-      //echo "<script> window.alert('Pin has been reset succesfully') </script>";
-    include 'end.html'; //page on which the user is sent to after logging in
+      include 'end.html';
     }
+    else{
+      echo "<script>
+      {
+        alert('Pin was not reset');
+      }
+      </script>";
+    }
+    
   }
 else {
   array_push($errors, "Entered pins do not match");

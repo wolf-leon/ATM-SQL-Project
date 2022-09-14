@@ -27,7 +27,7 @@
                             <div class="text-center pins" style="margin-bottom:20px;padding-top: 20px">
                                 <label for="fname" style="font-size:18px; font-weight: bold; padding-right:20px">Enter
                                     Old Pin: </label>
-                                <input type="text" id="fname" maxlength="4" name="oldpin"
+                                <input type="text" id="fname" maxlength="4" name="oldpin" required
                                     placeholder="           4-Digit PIN"
                                     style="border-radius:25px;border:1px solid;"><br>
                             </div>
@@ -35,7 +35,7 @@
                             <div class="text-center pins" style="margin-bottom:20px;">
                                 <label for="fname" style="font-size:18px; font-weight: bold; padding-right:20px">Enter
                                     New Pin: </label>
-                                <input type="text" maxlength="4" id="fname" name="newpin"
+                                <input type="text" maxlength="4" id="fname" name="newpin" required
                                     placeholder="           4-Digit PIN"
                                     style="border-radius:25px;border:1px solid;"><br>
                             </div>
@@ -43,7 +43,7 @@
                             <div class="text-center pins" style="margin-bottom:20px;">
                                 <label for="fname"
                                     style="font-size:18px; font-weight: bold; padding-right:20px">Re-Enter Pin: </label>
-                                <input type="text" maxlength="4" id="fname" name="repin"
+                                <input type="text" maxlength="4" id="fname" name="repin" required
                                     placeholder="           4-Digit PIN"
                                     style="border-radius:25px;border:1px solid;"><br>
                             </div>
@@ -51,7 +51,7 @@
                 </div>
 
                 <div class="text-center " style="margin-bottom: 20px;">
-                    <a href="reset.php"><input type="submit" name="submit" value="Submit" class="rounded-pill btn btn-primary" style="width: 200px; height: 40px;"></a><br><br>
+                    <input type="submit" name="submit" value="Submit" onclick=" return confirm('Are you sure you want to change the Pin?')"  class="rounded-pill btn btn-primary" style="width: 200px; height: 40px;"><br><br>
                     <input type="reset" value="Clear" class="rounded-pill btn btn-primary" style="width: 200px; height: 40px;">
                 </div>
                 </form>
@@ -67,6 +67,20 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
         </script>
+        <script>
+             function myFunction(delUrl) {
+                if(confirm("Are you sure you want to change the Pin?")){
+                {
+                    document.location = delUrl;
+                    
+                } 
+                 else
+                {
+                    document.location = 'reset.php';
+                }        
+                } 
+            }
+      </script>
     </body>
 
 </html>
