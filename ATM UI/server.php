@@ -4,17 +4,7 @@ include("config.php");
 ?>
 
 <?php
-<<<<<<< HEAD
-=======
-$host="localhost"; // Host name
-$username="root"; // Mysql username
-$password=""; // Mysql password
-$db_name="f_atmdb"; // Database name
-$tbl_name="card"; // Table name
 
-// Connect to server and select database.
-$db=mysqli_connect("$host", "$username", "$password","$db_name")or die("cannot connect");
->>>>>>> 1f4d5bd46f31c8a483f37f3b5c1dc91804ff6824
 
 	// declaring and hoisting the variables
 	//$fname=$_POST['fname'];
@@ -41,6 +31,8 @@ $db=mysqli_connect("$host", "$username", "$password","$db_name")or die("cannot c
 			if (mysqli_num_rows($results) == 1) {
 				// Storing username in session variable
 				$_SESSION['fname'] = $fname;
+
+				
              
 				// Welcome message
 				$_SESSION['success'] = "You have logged in!";
@@ -53,6 +45,8 @@ $db=mysqli_connect("$host", "$username", "$password","$db_name")or die("cannot c
 			}
 		}
 	}
+
+
 
 	//PIN Verfication
 	

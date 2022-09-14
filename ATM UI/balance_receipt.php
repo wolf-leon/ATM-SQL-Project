@@ -23,79 +23,63 @@ $cardnum=mysqli_fetch_array(($num));
 
 ?>
 <!DOCTYPE html>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <!-- Site Metas -->
-  <meta name="keywords" content="" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
-  <link rel="shortcut icon" href="" type="">
-  <link rel="stylesheet" href="style.css">
 
-  <!-- title -->
-        <title>ABC Bank</title>
+<div data-include="test.html"></div>
 
-        <!-- bootstrap cdn link -->
-        <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-
-
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-
-
-    <body style="background:linear-gradient(#f28e7e,#d9ebcc); background-attachment: fixed;">
-       <!-- auth page code here -->
-      
-      <div class="x">
-        <img src="images\bank logo.png" alt="bank logo" style="width:150px;height:100px;";>
-      </div> 
-
-      <div class="row mx-auto">
+    <div class="row mx-auto">
         <div class="col col-lg-6 text-center">
-      <img src="images\receipt.png" alt="bankbg" style="width:520px;height:550px;">
+            <img src="images\receipt.png" alt="bankbg" style="width:500px;height:5o0px;">
         </div>
 
         <div class="col col-lg-6 text-center mx-auto">
-<div class=" text-center" style="margin-top: 80px;">   
+            <div class=" text-center" style="margin-top: 20px;">
 
-    <div class="box">
-        <style type="text/css">
-            .box {
-              border: 5px solid black ;
-              width: 450px;
-              height: 400px;
-            }
-            </style>
-    <div class="mx-15 text-center m" >
-        
-    <p style="font-weight: bold;font-size: 50px;" ><u>RECEIPT</u></p>
-	<p style="font-size: 20px;" ><b>ATM Transaction Id:</b>
-    <?php echo'<style="font-weight: bold;font-size: 20px;" >'.$t['transaction_id'].'</style>';?></p>
-    <p style="font-size: 20px;" ><b>Card Number :</b> 
-    <?php echo'<style="font-weight: bold;font-size: 20px;" >'.$cardnum['card_number'].'</style>';?></p> 
-    <p style="font-size: 30px;" ><b>Available Balance: </b>
-    <?php echo'<style="font-weight: bold;font-size: 30px;" >'.$res['balance'].'</style>';?>
+                <div class="box">
+                    <style type="text/css">
+                    .box {
+                        border: 5px solid black;
+                        width: 350px;
+                        height: 350px;
+                    }
+                    </style>
+                    <div class="mx-15 text-center m">
+
+                        <p style="font-weight: bold;font-size: 50px;"><u>RECEIPT</u></p>
+                        <p style="font-size: 20px;"><b>ATM Transaction Id:</b>
+                            <?php echo'<style="font-weight: bold;font-size: 20px;" >'.$t['transaction_id'].'</style>';?>
+                        </p>
+                        <p style="font-size: 20px;"><b>Card Number :</b>
+                            <?php echo'<style="font-weight: bold;font-size: 20px;" >'.$cardnum['card_number'].'</style>';?>
+                        </p>
+                        <p style="font-size: 30px;"><b>Available Balance: </b>
+                            <?php echo'<style="font-weight: bold;font-size: 30px;" >'.$res['balance'].'</style>';?>
+                    </div>
+                </div>>
+
+                <div style="margin-bottom: 5px;">
+                    <p> Would you like to make a new transaction?</p>
+                    <a href="options.html">
+            <button type="button" style="width:100px;height:50px ; margin-right: 12px;" class="rounded-pill btn btn-primary g">YES</button>
+            </a>
+            <a href="end.html">
+            <button type="button" style="width:100px;height:50px;" class="rounded-pill btn btn-primary g">NO</button>
+            </a>
+                </div>
+                </form>
+            </div>
+        </div>
     </div>
-    </div>>
 
-        <div class="text-center " style="margin-bottom: 20px;">
-            <a href="collect_receipt.html">
-			<input type="submit" value="Print Recipt" class="rounded-pill btn btn-primary g">
-			</a>
-        </div>
-    </form>
-</div>
-</div>
-        </div>
-
-      </div>
-
-            
+    </div>
 
 
-       <!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-    </body>
+
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
+    </script> <script src="csi.min.js"> </script>
+
+</body>
+
 </html>

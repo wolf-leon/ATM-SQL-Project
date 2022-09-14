@@ -1,16 +1,7 @@
-<?php session_start();?>
+<?php session_start();
+include("config.php");?>
 <?php
-
-  $host = "localhost"; // Host name
-  $username = "root"; // Mysql username
-  $password = ""; // Mysql password
-  $db_name = "f_atmdb"; // Database name
-  $tbl_name = "card"; // Table name
-
-  // Connect to server and select database.
-  $db = mysqli_connect("$host", "$username", "$password", "$db_name") or die("cannot connect");
   $errors = array();
-
   if (isset($_POST['submit'])) 
   {
     $oldpin = mysqli_real_escape_string($db, $_POST['oldpin']);
@@ -33,7 +24,7 @@
   {
     
 
-    $query = ("UPDATE $tbl_name SET `pin`= $newpin WHERE `pin`=$oldpin");
+    $query = ("UPDATE card SET `pin`= $newpin WHERE `pin`=$oldpin");
     $results = mysqli_query($db, $query);
     if ($results) {
       echo "<script>alert('Pin has been succesfully reset');</script>";
