@@ -133,4 +133,3 @@ $amt=mysqli_fetch_array(($resul));
 
     </body>
 </html>
-
