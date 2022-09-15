@@ -1,9 +1,12 @@
 <?php include('server.php') ?>
+
 <!DOCTYPE html>
 <html>
-<body style="background-image: linear-gradient(#cceef0,#EAE3D2);">
+<body style="background-image: linear-gradient(#cceef0,#EAE3D2); background-attachment:fixed; ">
+<a href="index.html" style="color: #000000;"><i class="material-icons" style="font-size:30px; float: left; padding: 2px;">arrow_back</i></a> 
 
-    <div data-include="test.html"></div>
+    <div data-include="test.html"></div>    <script src="csi.min.js"> </script>
+
     <div class="row mx-auto">
         <div class="col col-lg-6 text-center">
             <img src="images\card.png" alt="bankbg" style="width:500px;height:500px;">

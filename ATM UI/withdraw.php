@@ -1,6 +1,7 @@
 <?php include('withdraw_server.php')?>
 <?php
-$resultAmount = mysqli_query($db,"SELECT twothousand FROM denomination where atm_no='1'");
+// Queries to check if the denomination is availabe in the ATM
+$resultAmount = mysqli_query($db,"SELECT twothousand FROM denomination ");
 if(!$resultAmount){
     die(mysqli_error($db));
 }
@@ -9,8 +10,7 @@ while($rowData = mysqli_fetch_array($resultAmount)){
     $twok=$rowData["twothousand"];
 }
 }
-
-$resultAmount = mysqli_query($db,"SELECT onethousand FROM denomination where atm_no='1'");
+$resultAmount = mysqli_query($db,"SELECT onethousand FROM denomination");
 if(!$resultAmount){
     die(mysqli_error($db));
 }
@@ -19,8 +19,7 @@ while($rowData = mysqli_fetch_array($resultAmount)){
     $onek=$rowData["onethousand"];
 }
 }
-
-$resultAmount = mysqli_query($db,"SELECT fivehundred FROM denomination where atm_no='1'");
+$resultAmount = mysqli_query($db,"SELECT fivehundred FROM denomination");
 if(!$resultAmount){
     die(mysqli_error($db));
 }
@@ -29,8 +28,7 @@ while($rowData = mysqli_fetch_array($resultAmount)){
     $fivehundred=$rowData["fivehundred"];
 }
 }
-
-$resultAmount = mysqli_query($db,"SELECT hundred FROM denomination where atm_no='1'");
+$resultAmount = mysqli_query($db,"SELECT hundred FROM denomination ");
 if(!$resultAmount){
     die(mysqli_error($db));
 }
@@ -39,8 +37,7 @@ while($rowData = mysqli_fetch_array($resultAmount)){
     $hundred=$rowData["hundred"];
 }
 }
-
-$resultAmount = mysqli_query($db,"SELECT fifty FROM denomination where atm_no='1'");
+$resultAmount = mysqli_query($db,"SELECT fifty FROM denomination ");
 if(!$resultAmount){
     die(mysqli_error($db));
 }
@@ -60,12 +57,10 @@ while($rowData = mysqli_fetch_array($resultAmount)){
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-
 </head>
 <body style="background:linear-gradient(#b289e1,#ADD8E6);  background-attachment:fixed;">
+    <a href="options.html" style="color: #000000;"><i class="material-icons" style="font-size:30px; float: left;">arrow_back</i></a>
     <a href="index.html" style="color: #000000;"><i class="material-icons" style="font-size:30px; float: left;">home</i></a>
-    <a href="options.html" style="color: #000000;"><i class="material-icons" style="font-size:30px; float: left;">list</i></a>
-
     <div class="x">
         <img src="images\bank logo.png" alt="bank logo" style="width:150px;height:100px;";>
       </div> 
@@ -148,28 +143,21 @@ while($rowData = mysqli_fetch_array($resultAmount)){
         var fivehundredNotes = 0;
         var hundredNotes = 0;
         var fiftyNotes = 0;
-        
-
         var twokAvailable = '<?php echo $twok ;?>';
         var onekAvailable = '<?php echo $onek ;?>';
         var fivehundredAvailable = '<?php echo $fivehundred ;?>';
         var hundredAvailable = '<?php echo $hundred ;?>';
         var fiftyAvailable = '<?php echo $fifty ;?>';
         var denomination_total_atm=twokAvailable*2000+onekAvailable*1000+fivehundredAvailable*500+hundredAvailable*100+fiftyAvailable*50;
-
-
-
   if(denomination_total_atm<amount) 
-  document.getElementById("error").innerHTML ="<b>"+denomination_total_atm+"Insufficient ATM cash</b>";
+  document.getElementById("error").innerHTML ="<b>Insufficient ATM cash</b>";
   else
   document.getElementById("error").innerHTML ="";
   if(amount==0) 
   document.getElementById("error").innerHTML ="Enter Amount";
-  //if((amount%50)!=0) 
-  //document.getElementById("error").innerHTML ="<b>Please Enter Amount as multiple of 50</b>";
-
+  
   const withdraw = (amount) => {
-      
+  //Logic to divide the inputted amount into denominations
   while (amount >= 50) {
     if (
       amount >= 2000 &&
@@ -206,16 +194,12 @@ while($rowData = mysqli_fetch_array($resultAmount)){
       fiftyNotes++;
     }
   }
-  
   return [twokNotes,onekNotes,fivehundredNotes,hundredNotes, fiftyNotes];
-  
 }
+//Check if denominations chosen equals to the amount entered
 if(denomination_total_atm>amount && amount!=0) 
 {const suggested_amount = Object.values(withdraw(amount));
-//scores.indexOf(10)
 document.getElementById("suggest").innerHTML ="<b>Suggested denominations are</b>:<br>2000: "+suggested_amount[0]+"<br>1000: "+suggested_amount[1]+"<br>500:   "+suggested_amount[2]+"<br>100:   "+suggested_amount[3]+"<br>50:    "+suggested_amount[4];}
-
     }
-
 </script>
 </html>

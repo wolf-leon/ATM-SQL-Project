@@ -3,6 +3,7 @@ include("config.php");
 
 session_start();
 
+// to display latest transaction id
 $select_query="SELECT transaction_id FROM transactions where card_number='$_SESSION[fname]' ORDER BY transaction_id DESC LIMIT 1 ;";
 
 
@@ -10,26 +11,26 @@ $trans= mysqli_query($db, $select_query) or die(mysqli_error($db));
 
 $t=mysqli_fetch_array(($trans));
 
+//to display Balance
 $select_query="SELECT balance FROM accounts WHERE card_number='$_SESSION[fname]';";
 $result= mysqli_query($db, $select_query) or die(mysqli_error($db));
 
 $res=mysqli_fetch_array(($result));
 
-
+//to display Card Number
 $select_query="SELECT card_number FROM accounts WHERE card_number='$_SESSION[fname]';";
 $num= mysqli_query($db, $select_query) or die(mysqli_error($db));
-
 $cardnum=mysqli_fetch_array(($num));
 
+//to display Transaction Time
 $select_query="SELECT transaction_time FROM transactions WHERE card_number='$_SESSION[fname]';";
 $date= mysqli_query($db, $select_query) or die(mysqli_error($db));
-
 $date=mysqli_fetch_array(($date));
-
-
 
 ?>
 <!DOCTYPE html>
+<body style="background:linear-gradient(#EE9CA7,
+#FFDDE1); height: 100vh; background-attachment: fixed;">
 
 <div data-include="test.html"></div>
 
@@ -67,12 +68,8 @@ $date=mysqli_fetch_array(($date));
                 </div>>
 
                 <div style="margin-bottom: 5px;">
-                    <p> Would you like to make a new transaction?</p>
-                    <a href="options.html">
-            <button type="button" style="width:100px;height:50px ; margin-right: 12px;" class="rounded-pill btn btn-primary g">YES</button>
-            </a>
-            <a href="end.html">
-            <button type="button" style="width:100px;height:50px;" class="rounded-pill btn btn-primary g">NO</button>
+                <a href="collect_receipt.html">
+            <input type="submit" value="Print Recipt" class="rounded-pill btn btn-primary g">
             </a>
                 </div>
                 </form>
@@ -81,9 +78,6 @@ $date=mysqli_fetch_array(($date));
     </div>
 
     </div>
-
-
-
 
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"

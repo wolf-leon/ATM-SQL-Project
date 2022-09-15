@@ -3,15 +3,12 @@
 <!DOCTYPE html>
 <html>
 
-<body style="background-color: aquamarine;">
 <a href="pin.php" style="color: #000000;"><i class="material-icons" style="font-size:30px">arrow_back</i></a>
 
     <div data-include="test.html"></div>
 
     <body style="background:linear-gradient(#8fd8d9,#9ee2b4); height: 100vh; background-attachment: fixed;">
         <!-- auth page code here -->
-        
-
         <div class="row mx-auto">
             <div class="col col-lg-6 text-center">
                 <img src="reset.png" alt="resetpin" style="width:450px;height:480px;">
@@ -22,7 +19,7 @@
                     <div class="mx-auto text-center">
 
                         <form action="" method="post">
-                            <?php include('errors2.php') ?>
+                            <?php include('errors.php') ?>
 
                             <div class="text-center pins" style="margin-bottom:20px;padding-top: 20px">
                                 <label for="fname" style="font-size:18px; font-weight: bold; padding-right:20px">Enter
